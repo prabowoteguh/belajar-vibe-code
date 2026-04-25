@@ -23,7 +23,11 @@ import (
 func main() {
 	// Initialize Logger
 	logger.InitLogger()
-	defer logger.Log.Sync()
+	defer func() {
+		if err := logger.Log.Sync(); err != nil {
+			fmt.Fprintf(os.Stderr, "failed to sync logger: %v\n", err)
+		}
+	}()
 
 	// Load Config
 	cfg := config.LoadConfig()
@@ -36,7 +40,7 @@ func main() {
 	defer db.Close()
 
 	// Initialize Redis
-	rdb, err := redis.InitRedis(cfg)
+	_, err = redis.InitRedis(cfg)
 	if err != nil {
 		logger.Error("failed to initialize redis", zap.Error(err))
 	} else {
