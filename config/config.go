@@ -26,6 +26,10 @@ type Config struct {
 	ReadTimeout  int
 	WriteTimeout int
 	IdleTimeout  int
+
+	JiraHost  string
+	JiraUser  string
+	JiraToken string
 }
 
 func LoadConfig() *Config {
@@ -52,6 +56,10 @@ func LoadConfig() *Config {
 		ReadTimeout:  getEnvAsInt("READ_TIMEOUT", 15),
 		WriteTimeout: getEnvAsInt("WRITE_TIMEOUT", 15),
 		IdleTimeout:  getEnvAsInt("IDLE_TIMEOUT", 60),
+
+		JiraHost:  getEnv("JIRA_HOST", "https://jira.bri.co.id"),
+		JiraUser:  getEnv("JIRA_USER", "00345834"),
+		JiraToken: getEnv("JIRA_TOKEN", "P@ssw0rdBrilian"),
 	}
 }
 
