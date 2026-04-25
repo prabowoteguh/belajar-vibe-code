@@ -1,0 +1,4 @@
+buatkan saya sistem design untuk membuat API yang akan dikerjakan oleh junior programmer atau oleh model AI yang lebih murah
+spesifikasi API nya adalah membuat task di jira menggunakan API jira berikut:
+https://jira.bri.co.id/rest/api/3/issue/bulk
+dengan parameter body nya json 
